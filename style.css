@@ -1,0 +1,115 @@
+@font-face {
+  font-family: Bodoni; /* set name */
+  src: url(bodoni-72.ttf); /* url of the font */
+}
+
+:root {
+	--span-stroke-width: 1.5px;
+	--span-fill: #ffffff;
+	--span-stroke-color: #000000;
+	--span-weight: 700; 
+}
+body {
+    background-color: #ffffff;
+}
+span {
+	font-family: "Bodoni", serif;
+	font-weight: var(--span-weight);
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: white;
+	-webkit-text-stroke: 0.025em black;
+	display: inline-block;
+	line-height: 1;
+    font-size: 3vw;
+}
+span.small {
+	--span-stroke-width: 0.9px;
+}
+
+.logo {
+    max-width: 50%;
+	margin-top: 10rem;
+}
+
+.page {
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+
+/* NAVBAR */
+
+.topnav {
+  background-color: #ffffff;
+
+  height: 3rem;
+  position: fixed;
+  width: 99%;
+  background-repeat: repeat-x;
+  background-image: url("note paper.webp");
+	background-size: auto 3rem; 
+}
+
+.topnav a {
+  text-align: center;
+  padding: 0px;
+  text-decoration: none;
+  font-size: 17px;
+	vertical-align: middle;
+}
+
+.topnav a:hover {
+  color: rgb(58, 58, 58);
+}
+
+
+.topnav img {
+	height: 3rem;
+	vertical-align: middle;
+	margin-right: 0px;
+
+}
+
+.navlogo {
+	float: left;
+	padding: 0px;
+}
+
+.nav {
+	float: right;
+	margin-right: 1rem;
+	line-height: 3rem;
+		font-family: "Bodoni", serif;
+	font-weight: var(--span-weight);
+	color: rgb(0, 0, 0);
+}
+
+
+.horizontal-links {
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+    display: flex;
+    gap: 1.25rem;         /* space between items */
+    justify-content: center;
+    align-items: center;
+}
+
+.horizontal-links li {
+    margin: 0;
+}
+
+.horizontal-links a {
+    text-decoration: none;
+    color: inherit;
+    padding: 0.2rem 0.4rem;
+    display: inline-block;
+}
+
+i {
+	font-size: 2.5vw;
+	color: black;
+	margin: 1rem;
+}
