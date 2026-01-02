@@ -121,7 +121,7 @@ i {
 	padding-top: 2rem;
 	padding-left: 2rem;
 	padding-right: 2rem;
-	margin-bottom: 3rem;
+	margin-bottom: 2rem;
 }
 
 .section-title {
@@ -156,7 +156,7 @@ i {
 }
 
 .release-card {
-	background-color: #f0f0f0;
+	background-color: #ffffff;
 	border-radius: 0.25rem;
 	overflow: hidden;
 	cursor: pointer;
