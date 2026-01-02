@@ -157,7 +157,6 @@ i {
 
 .release-card {
 	background-color: #f0f0f0;
-	aspect-ratio: 3/4;
 	border-radius: 0.25rem;
 	overflow: hidden;
 	cursor: pointer;
@@ -174,8 +173,9 @@ i {
 
 .release-image {
 	width: 100%;
-	flex-grow: 1;
+	height: 200px;
 	background-color: inherit;
+	flex-shrink: 0;
 }
 
 .release-info {
