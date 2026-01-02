@@ -118,7 +118,7 @@ i {
 /* RELEASES PAGE */
 
 .releases-page {
-	padding-top: 1rem;
+	padding-top: 2rem;
 	padding-left: 2rem;
 	padding-right: 2rem;
 	margin-bottom: 3rem;
@@ -128,7 +128,7 @@ i {
 	text-align: center;
 	font-family: "Bodoni Moda", serif;
 	font-weight: 700;
-	font-size: 3.5vw;
+	font-size: 3vw;
 	margin-bottom: 3rem;
 	letter-spacing: 0.05em;
 	text-transform: uppercase;
@@ -147,6 +147,7 @@ i {
 	overflow-x: auto;
 	padding-bottom: 1rem;
 	scroll-behavior: smooth;
+	justify-content: center;
 }
 
 .release-card {

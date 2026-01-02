@@ -77,7 +77,7 @@
                     }
                     
                     card.innerHTML = `
-                        <div class="release-image"></div>
+                        <div class="release-image" ${album.coverArt ? `style="background-image: url('${album.coverArt}'); background-size: cover; background-position: center;"` : ''}></div>
                         <div class="release-info">
                             <p class="album-title">${album.title}</p>
                             <p class="album-artist">${album.artist}</p>

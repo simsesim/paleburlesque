@@ -3,6 +3,7 @@
     "title": "Album",
     "artist": "Person",
     "year": 2026,
+    "coverArt": "",
     "streamingLinks": [
       {
         "platform": "bandcamp",
@@ -22,6 +23,7 @@
     "title": "Album",
     "artist": "Person",
     "year": 2025,
+    "coverArt": "",
     "streamingLinks": [
       {
         "platform": "bandcamp",
@@ -41,6 +43,7 @@
     "title": "Album",
     "artist": "Person",
     "year": 2024,
+    "coverArt": "",
     "streamingLinks": [
       {
         "platform": "bandcamp",
