@@ -1,0 +1,59 @@
+[
+  {
+    "title": "Album",
+    "artist": "Person",
+    "year": 2026,
+    "streamingLinks": [
+      {
+        "platform": "bandcamp",
+        "url": "https://example.com"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://example.com"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://example.com"
+      }
+    ]
+  },
+  {
+    "title": "Album",
+    "artist": "Person",
+    "year": 2025,
+    "streamingLinks": [
+      {
+        "platform": "bandcamp",
+        "url": "https://example.com"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://example.com"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://example.com"
+      }
+    ]
+  },
+  {
+    "title": "Album",
+    "artist": "Person",
+    "year": 2024,
+    "streamingLinks": [
+      {
+        "platform": "bandcamp",
+        "url": "https://example.com"
+      },
+      {
+        "platform": "soundcloud",
+        "url": "https://example.com"
+      },
+      {
+        "platform": "spotify",
+        "url": "https://example.com"
+      }
+    ]
+  }
+]

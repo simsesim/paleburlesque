@@ -115,3 +115,203 @@ i {
 	color: black;
 	margin: 1rem;
 }
+/* RELEASES PAGE */
+
+.releases-page {
+	padding-top: 1rem;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	margin-bottom: 3rem;
+}
+
+.section-title {
+	text-align: center;
+	font-family: "Bodoni Moda", serif;
+	font-weight: 700;
+	font-size: 3.5vw;
+	margin-bottom: 3rem;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: #000;
+}
+
+/* RELEASES SECTION */
+
+.releases-section {
+	margin-bottom: 5rem;
+}
+
+.releases-container {
+	display: flex;
+	gap: 2rem;
+	overflow-x: auto;
+	padding-bottom: 1rem;
+	scroll-behavior: smooth;
+}
+
+.release-card {
+	background-color: #f0f0f0;
+	aspect-ratio: 3/4;
+	border-radius: 0.25rem;
+	overflow: hidden;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	width: 200px;
+}
+
+.release-card:first-child {
+	background-color: #000;
+}
+
+.release-image {
+	width: 100%;
+	flex-grow: 1;
+	background-color: inherit;
+}
+
+.release-info {
+	padding: 1rem;
+	background-color: #fff;
+	border-top: 1px solid #e0e0e0;
+	transition: all 0.3s ease;
+}
+
+.release-card:hover .release-info {
+	background-color: #f9f9f9;
+}
+
+.streaming-links {
+	display: none;
+	list-style: none;
+	margin-top: 0.75rem;
+	padding: 0;
+	gap: 0.75rem;
+}
+
+.release-card:hover .streaming-links {
+	display: flex;
+}
+
+.streaming-links li {
+	margin: 0;
+}
+
+.streaming-links a {
+	text-decoration: none;
+	color: inherit;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.streaming-links i {
+	font-size: 1rem;
+	color: #333;
+	margin: 0;
+}
+
+.album-title {
+	font-family: "Bodoni Moda", serif;
+	font-weight: 700;
+	font-size: 0.95rem;
+	margin: 0.5rem 0 0;
+	color: #000;
+}
+
+.album-artist {
+	font-family: "Bodoni Moda", serif;
+	font-size: 0.85rem;
+	margin: 0.25rem 0;
+	color: #333;
+	display: inline;
+}
+
+.album-year {
+	font-family: "Bodoni Moda", serif;
+	font-size: 0.85rem;
+	margin: 0;
+	color: #333;
+	display: inline;
+	float: right;
+}
+
+.streaming-links {
+	font-family: "Bodoni Moda", serif;
+	font-size: 0.75rem;
+	margin-top: 0.75rem;
+	color: #666;
+	line-height: 1.3;
+}
+
+/* ROSTER SECTION */
+
+.roster-section {
+	margin-top: 4rem;
+}
+
+.roster-container {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 2rem;
+}
+
+.roster-card {
+	background-color: #f0f0f0;
+	padding: 1.5rem;
+	border-radius: 0.25rem;
+	min-height: 220px;
+	border: 2px solid transparent;
+	transition: all 0.3s ease;
+	display: flex;
+	flex-direction: column;
+}
+
+.roster-header {
+	display: flex;
+	gap: 1rem;
+	align-items: flex-start;
+	margin-bottom: 1rem;
+}
+
+.roster-info {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+
+.roster-avatar {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	background-color: #d0d0d0;
+	flex-shrink: 0;
+}
+
+.roster-name {
+	font-family: "Bodoni Moda", serif;
+	font-weight: 700;
+	font-size: 1rem;
+	margin: 0;
+	color: #000;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.roster-pronoun {
+	font-family: "Bodoni Moda", serif;
+	font-size: 0.8rem;
+	margin: 0;
+	color: #333;
+	font-style: italic;
+}
+
+.roster-bio {
+	font-family: "Bodoni Moda", serif;
+	font-size: 0.8rem;
+	line-height: 1.5;
+	color: #555;
+	margin: 0;
+}

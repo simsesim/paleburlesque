@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="PALE BURLESQUE" />
+    <meta name="theme-color" content="#ffffff" />
+    <script src="https://kit.fontawesome.com/a247d1422c.js" crossorigin="anonymous"></script>
+
+
+    <title>PALE BURLESQUE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+
+    <meta property="og:title" content="PALE BURLESQUE" />
+    <meta property="og:description" content="ONLINE RECORD LABEL, RADIO STATION, AND ACTIVE LIVE ART INSTALLATION ACROSS THE WORLD" />
+    <meta property="og:type" content="website" />
+</head>
+
+<body>
+    <div class="topnav">
+  <a href="/" class="navlogo"><img src="SLOGO.png"></a>
+  <a href="releases.html" class="nav">RELEASES</a>
+</div>
+
+    <div class="releases-page">
+        <div class="releases-section">
+            <h1 class="section-title">RELEASES</h1>
+            <div class="releases-container" id="releases-container"></div>
+        </div>
+
+        <div class="roster-section">
+            <h1 class="section-title">ROSTER</h1>
+            <div class="roster-container">
+                <div class="roster-card">
+                    <div class="roster-header">
+                        <div class="roster-avatar"></div>
+                        <div class="roster-info">
+                            <h2 class="roster-name">PERSON</h2>
+                            <p class="roster-pronoun">idk pronouns or summ</p>
+                        </div>
+                    </div>
+                    <p class="roster-bio">maybe a short description and then some socials and music links</p>
+                </div>
+
+                <div class="roster-card"></div>
+                <div class="roster-card"></div>
+                <div class="roster-card"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load albums from JSON and render them
+        async function loadAlbums() {
+            try {
+                const response = await fetch('albums.json');
+                const albums = await response.json();
+                const container = document.getElementById('releases-container');
+                
+                albums.forEach(album => {
+                    const card = document.createElement('div');
+                    card.className = 'release-card';
+                    
+                    let streamingLinksHTML = '';
+                    if (album.streamingLinks && album.streamingLinks.length > 0) {
+                        streamingLinksHTML = '<ul class="streaming-links">';
+                        album.streamingLinks.forEach(link => {
+                            const iconClass = `fa-${link.platform}`;
+                            streamingLinksHTML += `
+                                <li><a href="${link.url}" target="_blank"><i class="fa-brands ${iconClass}"></i></a></li>
+                            `;
+                        });
+                        streamingLinksHTML += '</ul>';
+                    }
+                    
+                    card.innerHTML = `
+                        <div class="release-image"></div>
+                        <div class="release-info">
+                            <p class="album-title">${album.title}</p>
+                            <p class="album-artist">${album.artist}</p>
+                            <p class="album-year">${album.year}</p>
+                            ${streamingLinksHTML}
+                        </div>
+                    `;
+                    
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Error loading albums:', error);
+            }
+        }
+        
+        loadAlbums();
+    </script>
+
+</body>
+</html>
