@@ -31,25 +31,12 @@
             <div class="releases-container" id="releases-container"></div>
         </div>
 
+        <!-- 
         <div class="roster-section">
             <h1 class="section-title">ROSTER</h1>
-            <div class="roster-container">
-                <div class="roster-card">
-                    <div class="roster-header">
-                        <div class="roster-avatar"></div>
-                        <div class="roster-info">
-                            <h2 class="roster-name">PERSON</h2>
-                            <p class="roster-pronoun">idk pronouns or summ</p>
-                        </div>
-                    </div>
-                    <p class="roster-bio">maybe a short description and then some socials and music links</p>
-                </div>
-
-                <div class="roster-card"></div>
-                <div class="roster-card"></div>
-                <div class="roster-card"></div>
-            </div>
+            <div class="roster-container" id="roster-container"></div>
         </div>
+        -->
     </div>
 
     <script>
@@ -94,6 +81,39 @@
         }
         
         loadAlbums();
+
+        // Load roster from JSON and render them
+        async function loadRoster() {
+            try {
+                const response = await fetch('roster.json');
+                const roster = await response.json();
+                const container = document.getElementById('roster-container');
+                
+                roster.forEach(member => {
+                    const card = document.createElement('div');
+                    card.className = 'roster-card';
+                    
+                    const avatarStyle = member.avatar ? `style="background-image: url('${member.avatar}'); background-size: cover; background-position: center;"` : '';
+                    
+                    card.innerHTML = `
+                        <div class="roster-header">
+                            <div class="roster-avatar" ${avatarStyle}></div>
+                            <div class="roster-info">
+                                <h2 class="roster-name">${member.name}</h2>
+                                <p class="roster-pronoun">${member.pronouns}</p>
+                            </div>
+                        </div>
+                        <p class="roster-bio">${member.bio}</p>
+                    `;
+                    
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Error loading roster:', error);
+            }
+        }
+        
+        loadRoster();
     </script>
 
 </body>
