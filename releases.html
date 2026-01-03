@@ -47,34 +47,54 @@
                 const albums = await response.json();
                 const container = document.getElementById('releases-container');
                 
-                albums.forEach(album => {
+                albums.forEach((album, index) => {
                     const card = document.createElement('div');
                     card.className = 'release-card';
+                    card.dataset.albumIndex = index;
                     
-                    let streamingLinksHTML = '';
-                    if (album.streamingLinks && album.streamingLinks.length > 0) {
-                        streamingLinksHTML = '<ul class="streaming-links">';
-                        album.streamingLinks.forEach(link => {
-                            const iconClass = `fa-${link.platform}`;
-                            streamingLinksHTML += `
-                                <li><a href="${link.url}" target="_blank"><i class="fa-brands ${iconClass}"></i></a></li>
-                            `;
-                        });
-                        streamingLinksHTML += '</ul>';
+                    function renderAlbumContent(currentAlbum) {
+                        let streamingLinksHTML = '';
+                        if (currentAlbum.streamingLinks && currentAlbum.streamingLinks.length > 0) {
+                            streamingLinksHTML = '<ul class="streaming-links">';
+                            currentAlbum.streamingLinks.forEach(link => {
+                                const iconClass = `fa-${link.platform}`;
+                                streamingLinksHTML += `
+                                    <li><a href="${link.url}" target="_blank"><i class="fa-brands ${iconClass}"></i></a></li>
+                                `;
+                            });
+                            streamingLinksHTML += '</ul>';
+                        }
+                        
+                        return `
+                            <div class="release-image" ${currentAlbum.coverArt ? `style="background-image: url('${currentAlbum.coverArt}'); background-size: cover; background-position: center;"` : ''}></div>
+                            <div class="release-info">
+                                <p class="album-title">${currentAlbum.title}</p>
+                                <div class="release-meta">
+                                    <p class="album-artist">${currentAlbum.artist}</p>
+                                    <p class="album-year">${currentAlbum.year}</p>
+                                </div>
+                                ${currentAlbum.hoverText ? `<p class="album-hover">${currentAlbum.hoverText}</p>` : ''}
+                                ${streamingLinksHTML}
+                            </div>
+                        `;
                     }
                     
-                    card.innerHTML = `
-                        <div class="release-image" ${album.coverArt ? `style="background-image: url('${album.coverArt}'); background-size: cover; background-position: center;"` : ''}></div>
-                        <div class="release-info">
-                            <p class="album-title">${album.title}</p>
-                            <div class="release-meta">
-                                <p class="album-artist">${album.artist}</p>
-                                <p class="album-year">${album.year}</p>
-                            </div>
-                            ${album.hoverText ? `<p class="album-hover">${album.hoverText}</p>` : ''}
-                            ${streamingLinksHTML}
-                        </div>
-                    `;
+                    card.innerHTML = renderAlbumContent(album);
+                    
+                    // Add click handler to toggle alternate if it exists
+                    if (album.alternate) {
+                        card.style.cursor = 'pointer';
+                        let isShowingMain = true;
+                        
+                        card.addEventListener('click', function(e) {
+                            // Don't toggle if clicking on a link
+                            if (e.target.closest('a')) return;
+                            
+                            isShowingMain = !isShowingMain;
+                            const dataToShow = isShowingMain ? album : album.alternate;
+                            card.innerHTML = renderAlbumContent(dataToShow);
+                        });
+                    }
                     
                     container.appendChild(card);
                 });
