@@ -261,9 +261,11 @@ i {
 	font-family: "Bodoni Moda", serif;
 	font-size: 0.85rem;
 	margin: 0;
+	margin-top: 0.75rem;
 	color: #333;
 	display: none;
 	float: right;
+	line-height: 1.3;
 }
 
 .release-card:hover .album-number {
