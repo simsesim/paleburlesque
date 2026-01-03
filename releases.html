@@ -27,7 +27,11 @@
 
     <div class="releases-page">
         <div class="releases-section">
-            <h1 class="section-title">RELEASES</h1>
+            <h1 class="section-title">
+                <span id="tab-releases" class="tab active">RELEASES</span>
+                <span class="tab-sep">//</span>
+                <span id="tab-remixes" class="tab">REMIXES</span>
+            </h1>
             <div class="releases-container" id="releases-container"></div>
         </div>
 
@@ -40,61 +44,102 @@
     </div>
 
     <script>
-        // Load albums from JSON and render them
+        // Generic renderer for a list of releases
+        function renderReleases(items) {
+            const container = document.getElementById('releases-container');
+            container.innerHTML = '';
+
+            items.forEach(album => {
+                const card = document.createElement('div');
+                card.className = 'release-card';
+
+                let streamingLinksHTML = '';
+                if (album.streamingLinks && album.streamingLinks.length > 0) {
+                    streamingLinksHTML = '<ul class="streaming-links">';
+                    album.streamingLinks.forEach(link => {
+                        const iconClass = `fa-${link.platform}`;
+                        streamingLinksHTML += `
+                            <li><a href="${link.url}" target="_blank"><i class="fa-brands ${iconClass}"></i></a></li>
+                        `;
+                    });
+                    streamingLinksHTML += '</ul>';
+                }
+
+                card.innerHTML = `
+                    <div class="release-image" ${album.coverArt ? `style="background-image: url('${album.coverArt}'); background-size: cover; background-position: center;"` : ''}></div>
+                    <div class="release-info">
+                        <p class="album-title">${album.title}</p>
+                        <p class="album-artist">${album.artist}</p>
+                        <p class="album-year">${album.year}</p>
+                        ${streamingLinksHTML}
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
         async function loadAlbums() {
             try {
                 const response = await fetch('albums.json');
                 const albums = await response.json();
-                const container = document.getElementById('releases-container');
-                
-                albums.forEach(album => {
-                    const card = document.createElement('div');
-                    card.className = 'release-card';
-                    
-                    let streamingLinksHTML = '';
-                    if (album.streamingLinks && album.streamingLinks.length > 0) {
-                        streamingLinksHTML = '<ul class="streaming-links">';
-                        album.streamingLinks.forEach(link => {
-                            const iconClass = `fa-${link.platform}`;
-                            streamingLinksHTML += `
-                                <li><a href="${link.url}" target="_blank"><i class="fa-brands ${iconClass}"></i></a></li>
-                            `;
-                        });
-                        streamingLinksHTML += '</ul>';
-                    }
-                    
-                    card.innerHTML = `
-                        <div class="release-image" ${album.coverArt ? `style="background-image: url('${album.coverArt}'); background-size: cover; background-position: center;"` : ''}></div>
-                        <div class="release-info">
-                            <p class="album-title">${album.title}</p>
-                            <p class="album-artist">${album.artist}</p>
-                            <p class="album-year">${album.year}</p>
-                            ${streamingLinksHTML}
-                        </div>
-                    `;
-                    
-                    container.appendChild(card);
-                });
+                renderReleases(albums);
             } catch (error) {
                 console.error('Error loading albums:', error);
             }
         }
-        
+
+        async function loadRemixes() {
+            try {
+                const response = await fetch('remixes.json');
+                const remixes = await response.json();
+                renderReleases(remixes);
+            } catch (error) {
+                console.error('Error loading remixes:', error);
+            }
+        }
+
+        function setActiveTab(name) {
+            const tabReleases = document.getElementById('tab-releases');
+            const tabRemixes = document.getElementById('tab-remixes');
+            if (name === 'releases') {
+                tabReleases.classList.add('active');
+                tabRemixes.classList.remove('active');
+            } else {
+                tabReleases.classList.remove('active');
+                tabRemixes.classList.add('active');
+            }
+        }
+
+        document.getElementById('tab-releases').addEventListener('click', () => {
+            setActiveTab('releases');
+            loadAlbums();
+        });
+
+        document.getElementById('tab-remixes').addEventListener('click', () => {
+            setActiveTab('remixes');
+            loadRemixes();
+        });
+
+        // Initialize with albums
+        setActiveTab('releases');
         loadAlbums();
 
-        // Load roster from JSON and render them
+        // Load roster safely only if roster container exists
         async function loadRoster() {
             try {
+                const container = document.getElementById('roster-container');
+                if (!container) return;
+
                 const response = await fetch('roster.json');
                 const roster = await response.json();
-                const container = document.getElementById('roster-container');
-                
+
                 roster.forEach(member => {
                     const card = document.createElement('div');
                     card.className = 'roster-card';
-                    
+
                     const avatarStyle = member.avatar ? `style="background-image: url('${member.avatar}'); background-size: cover; background-position: center;"` : '';
-                    
+
                     card.innerHTML = `
                         <div class="roster-header">
                             <div class="roster-avatar" ${avatarStyle}></div>
@@ -105,14 +150,14 @@
                         </div>
                         <p class="roster-bio">${member.bio}</p>
                     `;
-                    
+
                     container.appendChild(card);
                 });
             } catch (error) {
                 console.error('Error loading roster:', error);
             }
         }
-        
+
         loadRoster();
     </script>
 

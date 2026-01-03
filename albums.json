@@ -1,16 +1,4 @@
 [
-  {
-    "title": "AEROPLAINS (remixes)",
-    "artist": "C009",
-    "year": 2026,
-    "coverArt": "https://i1.sndcdn.com/artworks-wvEeYlWe7KxJC7TV-26GzUA-t500x500.jpg",
-    "streamingLinks": [
-      {
-        "platform": "soundcloud",
-        "url": "https://soundcloud.com/paleburlesque/sets/aeroplains-pale-burlesque-remix"
-      }
-    ]
-  },
     {
     "title": "experience",
     "artist": "simse",
@@ -28,18 +16,6 @@
       {
         "platform": "spotify",
         "url": "https://open.spotify.com/album/1RrmOSUImTngV9KqqbaLQ3?si=kWns0o25TWOdNrbWRb-p4A"
-      }
-    ]
-  },
-  {
-    "title": "bring me to enceladus (remixes)",
-    "artist": "TRITUS",
-    "year": 2025,
-    "coverArt": "https://i1.sndcdn.com/artworks-iDzwrXeaMrqROirF-AzNhcQ-t500x500.jpg",
-    "streamingLinks": [
-      {
-        "platform": "soundcloud",
-        "url": "https://soundcloud.com/paleburlesque/sets/bring-me-to-enceladus-pale-burlesque-remix"
       }
     ]
   },
