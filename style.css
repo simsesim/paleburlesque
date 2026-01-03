@@ -257,6 +257,16 @@ i {
 	float: right;
 }
 
+.album-number {
+	font-family: "Bodoni Moda", serif;
+	font-size: 0.85rem;
+	margin: 0.25rem 0;
+	color: #333;
+	display: inline;
+	float: right;
+	clear: right;
+}
+
 .streaming-links {
 	font-family: "Bodoni Moda", serif;
 	font-size: 0.75rem;

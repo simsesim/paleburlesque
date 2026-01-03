@@ -74,6 +74,7 @@
                                     <p class="album-year">${currentAlbum.year}</p>
                                 </div>
                                 ${currentAlbum.hoverText ? `<p class="album-hover">${currentAlbum.hoverText}</p>` : ''}
+                                ${currentAlbum.albumNumber ? `<p class="album-number">PB#${String(currentAlbum.albumNumber).padStart(2, '0')}</p>` : ''}
                                 ${streamingLinksHTML}
                             </div>
                         `;
