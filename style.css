@@ -260,11 +260,14 @@ i {
 .album-number {
 	font-family: "Bodoni Moda", serif;
 	font-size: 0.85rem;
-	margin: 0.25rem 0;
+	margin: 0;
 	color: #333;
-	display: inline;
+	display: none;
 	float: right;
-	clear: right;
+}
+
+.release-card:hover .album-number {
+	display: inline;
 }
 
 .streaming-links {
