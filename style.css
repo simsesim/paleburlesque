@@ -235,6 +235,19 @@ i {
 	display: inline;
 }
 
+.album-hover {
+	display: none;
+	font-family: "Bodoni Moda", serif;
+	font-size: 0.75rem;
+	margin: 0.25rem 0 0;
+	color: #666;
+	line-height: 1.2;
+}
+
+.release-card:hover .album-hover {
+	display: block;
+}
+
 .album-year {
 	font-family: "Bodoni Moda", serif;
 	font-size: 0.85rem;
